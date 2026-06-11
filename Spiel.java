@@ -37,8 +37,27 @@ public class Spiel
     private void raeumeAnlegen()
     {
         Raum draussen, hoersaal, cafeteria, labor, buero;
+
+        Raum draussen, flur1, flur2, klassenraum, klasse1, klasse2, klasse3, klasse4,
+             toiletteJ, toiletteM, schrank1, schrank2;
       
         // die Räume erzeugen
+
+
+        draussen = new Raum("vor dem Haupteingang der Schule");
+        flur1 = new Raum("in der Flur beim Haupteingang");
+        flur2 = new Raum("in der anderen Flur");
+        klassenraum = new Raum("in der Klassenraum");
+        klasse1 = new Raum("in der 1. Klasse");
+        klasse2 = new Raum("in der 2. Klasse");
+        klasse3 = new Raum("in der 3. Klasse");
+        klasse4 = new Raum("in der 4. Klasse");
+        toiletteJ = new Raum("in der Jungen Toilette");
+        toiletteM = new Raum("In der Madchen Toilette");
+        schrank1 = new Raum("in der 1. Schrank");
+        schrank2 = new Raum("in der 2. Schrank");
+
+
         draussen = new Raum("vor dem Haupteingang der Universität");
         hoersaal = new Raum("in einem Vorlesungssaal");
         cafeteria = new Raum("in der Cafeteria der Uni");
@@ -46,6 +65,8 @@ public class Spiel
         buero = new Raum("im Verwaltungsbüro der Informatik");
         
         // die Ausgänge initialisieren
+
+
         draussen.setzeAusgaenge(null, hoersaal, labor, cafeteria);
         hoersaal.setzeAusgaenge(null, null, null, draussen);
         cafeteria.setzeAusgaenge(null, draussen, null, null);
