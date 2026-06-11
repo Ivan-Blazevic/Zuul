@@ -36,10 +36,10 @@ public class Spiel
      */
     private void raeumeAnlegen()
     {
-        Raum draussen, hoersaal, cafeteria, labor, buero;
+       // Raum draussen, hoersaal, cafeteria, labor, buero;
 
         Raum draussen, flur1, flur2, klassenraum, klasse1, klasse2, klasse3, klasse4,
-             toiletteJ, toiletteM, schrank1, schrank2;
+             toiletteJ, toiletteM, schrank1, schrank2, cafeteria;
       
         // die Räume erzeugen
 
@@ -56,13 +56,14 @@ public class Spiel
         toiletteM = new Raum("In der Madchen Toilette");
         schrank1 = new Raum("in der 1. Schrank");
         schrank2 = new Raum("in der 2. Schrank");
+        cafeteria = new Raum("Cafeteria");
 
 
-        draussen = new Raum("vor dem Haupteingang der Universität");
-        hoersaal = new Raum("in einem Vorlesungssaal");
-        cafeteria = new Raum("in der Cafeteria der Uni");
-        labor = new Raum("in einem Rechnerraum");
-        buero = new Raum("im Verwaltungsbüro der Informatik");
+//        draussen = new Raum("vor dem Haupteingang der Universität");
+//        hoersaal = new Raum("in einem Vorlesungssaal");
+//        cafeteria = new Raum("in der Cafeteria der Uni");
+//        labor = new Raum("in einem Rechnerraum");
+//        buero = new Raum("im Verwaltungsbüro der Informatik");
         
         // die Ausgänge initialisieren
 
@@ -71,18 +72,21 @@ public class Spiel
         toiletteJ.setzeAusgaenge(null, null, null, null);
         toiletteM.setzeAusgaenge(null, null, null, null);
         flur2.setzeAusgaenge(flur1, klasse1, klasse3, klasse2);
+        schrank1.setzeAusgaenge(null, schrank2, null, klasse1);
+        schrank2.setzeAusgaenge(null, klassenraum, null, schrank1);
         klasse1.setzeAusgaenge(null, schrank1, null, flur2);
-        schrank1.setzeAusgaenge(null, null, null, klasse1);
         klasse2.setzeAusgaenge(null, flur2, klasse4, null);
         klasse3.setzeAusgaenge(flur2, null, null, klasse4);
         klasse4.setzeAusgaenge(klasse2, klasse3, null, null);
+        klassenraum.setzeAusgaenge(null, cafeteria, null, schrank2);
+        cafeteria.setzeAusgaenge(null, draussen, null, klassenraum);
 
-
-        draussen.setzeAusgaenge(null, hoersaal, labor, cafeteria);
-        hoersaal.setzeAusgaenge(null, null, null, draussen);
-        cafeteria.setzeAusgaenge(null, draussen, null, null);
-        labor.setzeAusgaenge(draussen, buero, null, null);
-        buero.setzeAusgaenge(null, null, null, labor);
+//
+//        draussen.setzeAusgaenge(null, hoersaal, labor, cafeteria);
+//        hoersaal.setzeAusgaenge(null, null, null, draussen);
+//        cafeteria.setzeAusgaenge(null, draussen, null, null);
+//        labor.setzeAusgaenge(draussen, buero, null, null);
+//        buero.setzeAusgaenge(null, null, null, labor);
 
         aktuellerRaum = draussen;  // das Spiel startet draussen
     }
