@@ -66,6 +66,17 @@ public class Spiel
         
         // die Ausgänge initialisieren
 
+        draussen.setzeAusgaenge(null, null, flur1, null);
+        flur1.setzeAusgaenge(draussen, toiletteM, flur2, toiletteJ);
+        toiletteJ.setzeAusgaenge(null, null, null, null);
+        toiletteM.setzeAusgaenge(null, null, null, null);
+        flur2.setzeAusgaenge(flur1, klasse1, klasse3, klasse2);
+        klasse1.setzeAusgaenge(null, schrank1, null, flur2);
+        schrank1.setzeAusgaenge(null, null, null, klasse1);
+        klasse2.setzeAusgaenge(null, flur2, klasse4, null);
+        klasse3.setzeAusgaenge(flur2, null, null, klasse4);
+        klasse4.setzeAusgaenge(klasse2, klasse3, null, null);
+
 
         draussen.setzeAusgaenge(null, hoersaal, labor, cafeteria);
         hoersaal.setzeAusgaenge(null, null, null, draussen);
