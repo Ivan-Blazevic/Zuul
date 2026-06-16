@@ -105,21 +105,7 @@ public class Spiel
         System.out.println("Zuul ist ein neues, unglaublich langweiliges Spiel.");
         System.out.println("Tippen Sie 'help', wenn Sie Hilfe brauchen.");
         System.out.println();
-        System.out.println("Sie sind " + aktuellerRaum.gibBeschreibung());
-        System.out.print("Ausgänge: ");
-        if(aktuellerRaum.nordausgang != null) {
-            System.out.print("north ");
-        }
-        if(aktuellerRaum.ostausgang != null) {
-            System.out.print("east ");
-        }
-        if(aktuellerRaum.suedausgang != null) {
-            System.out.print("south ");
-        }
-        if(aktuellerRaum.westausgang != null) {
-            System.out.print("west ");
-        }
-        System.out.println();
+        rauminfoAusgeben();
     }
 
     /**
@@ -200,22 +186,26 @@ public class Spiel
         }
         else {
             aktuellerRaum = naechsterRaum;
-            System.out.println("Sie sind " + aktuellerRaum.gibBeschreibung());
-            System.out.print("Ausgänge: ");
-            if(aktuellerRaum.nordausgang != null) {
-                System.out.print("north ");
-            }
-            if(aktuellerRaum.ostausgang != null) {
-                System.out.print("east ");
-            }
-            if(aktuellerRaum.suedausgang != null) {
-                System.out.print("south ");
-            }
-            if(aktuellerRaum.westausgang != null) {
-                System.out.print("west ");
-            }
-            System.out.println();
+            rauminfoAusgeben();
         }
+    }
+
+    private void rauminfoAusgeben() {
+        System.out.println("Sie sind " + aktuellerRaum.gibBeschreibung());
+        System.out.print("Ausgänge: ");
+        if(aktuellerRaum.nordausgang != null) {
+            System.out.print("north ");
+        }
+        if(aktuellerRaum.ostausgang != null) {
+            System.out.print("east ");
+        }
+        if(aktuellerRaum.suedausgang != null) {
+            System.out.print("south ");
+        }
+        if(aktuellerRaum.westausgang != null) {
+            System.out.print("west ");
+        }
+        System.out.println();
     }
 
     /**

@@ -16,11 +16,11 @@
  */
 public class Raum 
 {
-    public String beschreibung;
-    public Raum nordausgang;
-    public Raum suedausgang;
-    public Raum ostausgang;
-    public Raum westausgang;
+    private String beschreibung;
+    private Raum nordausgang;
+    private Raum suedausgang;
+    private Raum ostausgang;
+    private Raum westausgang;
 
     /**
      * Erzeuge einen Raum mit einer Beschreibung. Ein Raum
