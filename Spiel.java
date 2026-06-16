@@ -169,16 +169,16 @@ public class Spiel
         // Wir versuchen, den Raum zu verlassen.
         Raum naechsterRaum = null;
         if(richtung.equals("north")) {
-            naechsterRaum = aktuellerRaum.nordausgang;
+            naechsterRaum = aktuellerRaum.gibAusgang("north");
         }
         if(richtung.equals("east")) {
-            naechsterRaum = aktuellerRaum.ostausgang;
+            naechsterRaum = aktuellerRaum.gibAusgang("east");
         }
         if(richtung.equals("south")) {
-            naechsterRaum = aktuellerRaum.suedausgang;
+            naechsterRaum = aktuellerRaum.gibAusgang("south");
         }
         if(richtung.equals("west")) {
-            naechsterRaum = aktuellerRaum.westausgang;
+            naechsterRaum = aktuellerRaum.gibAusgang("west");
         }
 
         if (naechsterRaum == null) {
@@ -193,16 +193,16 @@ public class Spiel
     private void rauminfoAusgeben() {
         System.out.println("Sie sind " + aktuellerRaum.gibBeschreibung());
         System.out.print("Ausgänge: ");
-        if(aktuellerRaum.nordausgang != null) {
+        if(aktuellerRaum.gibAusgang("north") != null) {
             System.out.print("north ");
         }
-        if(aktuellerRaum.ostausgang != null) {
+        if(aktuellerRaum.gibAusgang("east") != null) {
             System.out.print("east ");
         }
-        if(aktuellerRaum.suedausgang != null) {
+        if(aktuellerRaum.gibAusgang("south") != null) {
             System.out.print("south ");
         }
-        if(aktuellerRaum.westausgang != null) {
+        if(aktuellerRaum.gibAusgang("west") != null) {
             System.out.print("west ");
         }
         System.out.println();
