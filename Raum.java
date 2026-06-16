@@ -66,4 +66,21 @@ public class Raum
     {
         return beschreibung;
     }
+
+    public Raum gibAusgang(String richtung) {
+
+        if (richtung.equals("north")) {
+            return nordausgang;
+        }
+        if (richtung.equals("east")) {
+            return ostausgang;
+        }
+        if (richtung.equals("south")) {
+            return suedausgang;
+        }
+        if (richtung.equals("west")) {
+            return westausgang;
+        }
+        return null;
+    }
 }
