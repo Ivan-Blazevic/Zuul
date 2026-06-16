@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 /**
  * Diese Klasse modelliert Räume in der Welt von Zuul.
  * 
@@ -17,10 +19,7 @@
 public class Raum 
 {
     private String beschreibung;
-    private Raum nordausgang;
-    private Raum suedausgang;
-    private Raum ostausgang;
-    private Raum westausgang;
+    private HashMap<String, Raum> ausgaenge;
 
     /**
      * Erzeuge einen Raum mit einer Beschreibung. Ein Raum
@@ -31,32 +30,19 @@ public class Raum
     public Raum(String beschreibung) 
     {
         this.beschreibung = beschreibung;
+        ausgaenge = new HashMap<>();
     }
 
     /**
      * Definiere die Ausgänge dieses Raums. Jede Richtung
      * führt entweder in einen anderen Raum oder ist 'null'
      * (kein Ausgang).
-     * @param norden  der Nordausgang
-     * @param osten   der Ostausgang
-     * @param sueden  der Südausgang
-     * @param westen  der Westausgang
+     * @param richtung  die Richtung, in der der Ausgang liegen soll.
+     * @param nachbar der Raum, der ueber diesen Ausgang erreciht wird.
      */
-    public void setzeAusgaenge(Raum norden, Raum osten,
-                               Raum sueden, Raum westen) 
+    public void setzeAusgaenge(String richtung, Raum nachbar)
     {
-        if(norden != null) {
-            nordausgang = norden;
-        }
-        if(osten != null) {
-            ostausgang = osten;
-        }
-        if(sueden != null) {
-            suedausgang = sueden;
-        }
-        if(westen != null) {
-            westausgang = westen;
-        }
+        ausgaenge.put(richtung, nachbar);
     }
 
     /**
@@ -69,19 +55,7 @@ public class Raum
 
     public Raum gibAusgang(String richtung) {
 
-        if (richtung.equals("north")) {
-            return nordausgang;
-        }
-        if (richtung.equals("east")) {
-            return ostausgang;
-        }
-        if (richtung.equals("south")) {
-            return suedausgang;
-        }
-        if (richtung.equals("west")) {
-            return westausgang;
-        }
-        return null;
+        return ausgaenge.get(richtung);
     }
 
     public String gibAusgaengeAlsString() {

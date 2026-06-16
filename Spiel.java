@@ -59,19 +59,67 @@ public class Spiel
         
         // die Ausgänge initialisieren
 
-        draussen.setzeAusgaenge(null, null, flur1, null);
-        flur1.setzeAusgaenge(draussen, toiletteM, flur2, toiletteJ);
-        flur2.setzeAusgaenge(flur1, klasse1, klasse3, klasse2);
-        toiletteJ.setzeAusgaenge(null, flur1, null, null);
-        toiletteM.setzeAusgaenge(null, null, null, flur2);
-        schrank1.setzeAusgaenge(null, schrank2, null, klasse1);
-        schrank2.setzeAusgaenge(null, klassenraum, null, schrank1);
-        klasse1.setzeAusgaenge(null, schrank1, null, flur2);
-        klasse2.setzeAusgaenge(null, flur2, klasse4, null);
-        klasse3.setzeAusgaenge(flur2, null, null, klasse4);
-        klasse4.setzeAusgaenge(klasse2, klasse3, null, null);
-        klassenraum.setzeAusgaenge(null, cafeteria, null, schrank2);
-        cafeteria.setzeAusgaenge(null, draussen, null, klassenraum);
+        // ricthtung: north, east, south, west
+
+        //draussen.setzeAusgaenge(null, null, flur1, null);
+        draussen.setzeAusgaenge("south", flur1);
+
+        //flur1.setzeAusgaenge(draussen, toiletteM, flur2, toiletteJ);
+        flur1.setzeAusgaenge("north", draussen);
+        flur1.setzeAusgaenge("east", toiletteM);
+        flur1.setzeAusgaenge("south", flur2);
+        flur1.setzeAusgaenge("west", toiletteJ);
+
+        //flur2.setzeAusgaenge(flur1, klasse1, klasse3, klasse2);
+        flur2.setzeAusgaenge("north", flur1);
+        flur2.setzeAusgaenge("east", klasse1);
+        flur2.setzeAusgaenge("south", klasse3);
+        flur2.setzeAusgaenge("west", klasse2);
+
+        // ricthtung: north, east, south, west
+
+        //toiletteJ.setzeAusgaenge(null, flur1, null, null);
+        toiletteJ.setzeAusgaenge("east", flur1);
+
+        //toiletteM.setzeAusgaenge(null, null, null, flur2);
+        toiletteM.setzeAusgaenge("west", flur2);
+
+        //schrank1.setzeAusgaenge(null, schrank2, null, klasse1);
+        schrank1.setzeAusgaenge("east", schrank2);
+        schrank1.setzeAusgaenge("west", klasse1);
+
+        //schrank2.setzeAusgaenge(null, klassenraum, null, schrank1);
+        schrank2.setzeAusgaenge("east", klassenraum);
+        schrank2.setzeAusgaenge("west", schrank1);
+
+        // ricthtung: north, east, south, west
+
+        //klasse1.setzeAusgaenge(null, schrank1, null, flur2);
+        klasse1.setzeAusgaenge("east", schrank1);
+        klasse1.setzeAusgaenge("west", flur2);
+
+        //klasse2.setzeAusgaenge(null, flur2, klasse4, null);
+        klasse2.setzeAusgaenge("east", flur2);
+        klasse2.setzeAusgaenge("south", klasse4);
+
+        //klasse3.setzeAusgaenge(flur2, null, null, klasse4);
+        klasse3.setzeAusgaenge("north", flur2);
+        klasse3.setzeAusgaenge("west", klasse4);
+
+        // ricthtung: north, east, south, west
+
+        //klasse4.setzeAusgaenge(klasse2, klasse3, null, null);
+        klasse4.setzeAusgaenge("north", klasse2);
+        klasse4.setzeAusgaenge("east", klasse3);
+
+        //klassenraum.setzeAusgaenge(null, cafeteria, null, schrank2);
+        klassenraum.setzeAusgaenge("east", cafeteria);
+        klassenraum.setzeAusgaenge("west", schrank2);
+
+        //cafeteria.setzeAusgaenge(null, draussen, null, klassenraum);
+        cafeteria.setzeAusgaenge("east", draussen);
+        cafeteria.setzeAusgaenge("west", klassenraum);
+
 
         aktuellerRaum = draussen;  // das Spiel startet draussen
     }
