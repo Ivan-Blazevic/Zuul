@@ -167,19 +167,7 @@ public class Spiel
         String richtung = befehl.gibZweitesWort();
 
         // Wir versuchen, den Raum zu verlassen.
-        Raum naechsterRaum = null;
-        if(richtung.equals("north")) {
-            naechsterRaum = aktuellerRaum.gibAusgang("north");
-        }
-        if(richtung.equals("east")) {
-            naechsterRaum = aktuellerRaum.gibAusgang("east");
-        }
-        if(richtung.equals("south")) {
-            naechsterRaum = aktuellerRaum.gibAusgang("south");
-        }
-        if(richtung.equals("west")) {
-            naechsterRaum = aktuellerRaum.gibAusgang("west");
-        }
+        Raum naechsterRaum = aktuellerRaum.gibAusgang(richtung);
 
         if (naechsterRaum == null) {
             System.out.println("Dort ist keine Tür!");
@@ -192,19 +180,8 @@ public class Spiel
 
     private void rauminfoAusgeben() {
         System.out.println("Sie sind " + aktuellerRaum.gibBeschreibung());
-        System.out.print("Ausgänge: ");
-        if(aktuellerRaum.gibAusgang("north") != null) {
-            System.out.print("north ");
-        }
-        if(aktuellerRaum.gibAusgang("east") != null) {
-            System.out.print("east ");
-        }
-        if(aktuellerRaum.gibAusgang("south") != null) {
-            System.out.print("south ");
-        }
-        if(aktuellerRaum.gibAusgang("west") != null) {
-            System.out.print("west ");
-        }
+        System.out.println(aktuellerRaum.gibAusgaengeAlsString());
+
         System.out.println();
     }
 

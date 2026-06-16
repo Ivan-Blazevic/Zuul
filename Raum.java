@@ -83,4 +83,23 @@ public class Raum
         }
         return null;
     }
+
+    public String gibAusgaengeAlsString() {
+        String s = "Ausgänge:";
+
+        if (nordausgang != null) {
+            s += " north";
+        }
+        if (ostausgang != null) {
+            s += " east";
+        }
+        if (suedausgang != null) {
+            s += " south";
+        }
+        if (westausgang != null) {
+            s += " west";
+        }
+
+        return s;
+    }
 }
