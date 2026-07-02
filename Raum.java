@@ -1,79 +1,66 @@
+import java.util.Iterator;
 import java.util.HashMap;
+import java.util.Map;
 
-/**
- * Diese Klasse modelliert Räume in der Welt von Zuul.
- * 
- * Diese Klasse ist Teil der Anwendung "Die Welt von Zuul".
- * "Die Welt von Zuul" ist ein sehr einfaches textbasiertes 
- * Adventure-Game.
- * 
- * Ein "Raum" repräsentiert einen Ort in der virtuellen Landschaft des
- * Spiels. Ein Raum ist mit anderen Räumen über Ausgänge verbunden.
- * Mögliche Ausgänge liegen im Norden, Osten, Süden und Westen.
- * Für jede Richtung hält ein Raum eine Referenz auf den 
- * benachbarten Raum.
- * 
- * @author  Michael Kölling und David J. Barnes
- * @version 2016.02.29
- */
-public class Raum 
+public class Raum
 {
     private String beschreibung;
     private HashMap<String, Raum> ausgaenge;
+    private HashMap<String, Gegenstand> geg;
 
-    /**
-     * Erzeuge einen Raum mit einer Beschreibung. Ein Raum
-     * hat anfangs keine Ausgänge. Eine Beschreibung hat die Form 
-     * "in einer Küche" oder "auf einem Sportplatz".
-     * @param beschreibung  die Beschreibung des Raums
-     */
-    public Raum(String beschreibung) 
+    public Raum(String beschreibung)
     {
         this.beschreibung = beschreibung;
         ausgaenge = new HashMap<>();
+        this.geg = new HashMap<>();
     }
 
-    /**
-     * Definiere die Ausgänge dieses Raums. Jede Richtung
-     * führt entweder in einen anderen Raum oder ist 'null'
-     * (kein Ausgang).
-     * @param richtung  die Richtung, in der der Ausgang liegen soll.
-     * @param nachbar der Raum, der ueber diesen Ausgang erreciht wird.
-     */
     public void setzeAusgaenge(String richtung, Raum nachbar)
     {
-        ausgaenge.put(richtung, nachbar);
+        ausgaenge.put(richtung,nachbar);
     }
 
-    /**
-     * @return  die Beschreibung dieses Raums
-     */
     public String gibBeschreibung()
     {
         return beschreibung;
     }
 
-    public Raum gibAusgang(String richtung) {
-
+    public Raum gibAusgang(String richtung){
         return ausgaenge.get(richtung);
     }
 
-    public String gibAusgaengeAlsString() {
-        String s = "Ausgänge:";
+    public String gibAusgaengeAlsString(){
+        String str= "Ausgänge:" ;
+        Iterator <String> it= ausgaenge.keySet().iterator();
+        while (it.hasNext()){
+            String richtung = it.next();
+            str+= " " + richtung;
+        }
+        return str;
+    }
 
-        if (nordausgang != null) {
-            s += " north";
+    public String gibLangeBeschreibung()
+    {
+        Iterator<Map.Entry<String, Gegenstand>> it = geg.entrySet().iterator();
+        String beschr = "Sie sind " + this.beschreibung + ".\n" + gibAusgaengeAlsString();
+        while (it.hasNext()){
+            Map.Entry<String, Gegenstand> entry = it.next();
+            beschr += "\nGegenstand: " + entry.getValue().gibBeschreibung()
+                    + " (Gewicht: " + entry.getValue().gibGewicht() + "g) \n"
+                    + " [take: " + entry.getKey() + "]";
         }
-        if (ostausgang != null) {
-            s += " east";
-        }
-        if (suedausgang != null) {
-            s += " south";
-        }
-        if (westausgang != null) {
-            s += " west";
-        }
+        return beschr;
+    }
 
-        return s;
+    public void gegenstandAblegen(Gegenstand g, String name){
+        if (geg.containsKey(name) == true ){
+            System.out.println("Der Gegenstand ist schon  in diesem Raum");
+        }
+        else{ geg.put(name, g); }
+    }
+
+    public Gegenstand gegenstandAufheben(String name)
+    {
+        return geg.remove(name);
     }
 }

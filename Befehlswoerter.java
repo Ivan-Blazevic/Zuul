@@ -1,8 +1,8 @@
 /**
  * Diese Klasse ist Teil der Anwendung "Die Welt von Zuul".
- * "Die Welt von Zuul" ist ein sehr einfaches textbasiertes 
+ * "Die Welt von Zuul" ist ein sehr einfaches textbasiertes
  * Adventure-Game.
- * 
+ *
  * Diese Klasse hält eine Aufzählung aller Befehlswörter, die dem
  * Spiel bekannt sind. Mit ihrer Hilfe werden eingetippte Befehle
  * erkannt.
@@ -15,7 +15,7 @@ class Befehlswoerter
 {
     // ein konstantes Array mit den gültigen Befehlswörtern
     private static final String gueltigeBefehle[] = {
-        "go", "quit", "help"
+            "go", "quit", "help", "look", "eat", "drink", "back","take", "drop", "status"
     };
 
     /**
@@ -41,5 +41,14 @@ class Befehlswoerter
         // Wenn wir hierher gelangen, wurde die Eingabe nicht
         // in den Befehlswörter gefunden.
         return false;
+    }
+
+    public String gibBefehleListe(){
+        String erg ="";
+        for (int i = 0; i<gueltigeBefehle.length;i++){
+            String befehl = gueltigeBefehle[i];
+            erg+= befehl + " ";
+        }
+        return erg;
     }
 }

@@ -1,21 +1,21 @@
 /**
  * Diese Klasse ist Teil der Anwendung "Die Welt von Zuul".
- * "Die Welt von Zuul" ist ein sehr einfaches textbasiertes 
+ * "Die Welt von Zuul" ist ein sehr einfaches textbasiertes
  * Adventure-Game.
- * 
+ *
  * Objekte dieser Klasse halten Informationen über Befehle,
  * die der Benutzer eingegeben hat. Ein Befehl besteht momentan
  * aus zwei Zeichenketten: einem Befehlswort und einem zweiten
  * Wort. Beim Befehl "nimm karte" beispielsweise sind die beiden
  * Zeichenketten "nimm" und "karte".
- * 
+ *
  * Befehle werden von Benutzern dieser Klasse auf Gültigkeit
  * überprüft. Wenn ein Spieler einen ungültigen Befehl eingegeben
  * hat (ein unbekanntes Befehlswort), dann ist das Befehlswort <null>.
  *
  * Wenn der Befehl nur aus einem Wort bestand, dann ist das
  * zweite Wort <null>.
- * 
+ *
  * @author  Michael Kölling und David J. Barnes
  * @version 2016.02.29
  */
@@ -75,4 +75,3 @@ class Befehl
         return (zweitesWort != null);
     }
 }
-
